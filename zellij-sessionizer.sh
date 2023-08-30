@@ -11,13 +11,15 @@ if [[ -z $selected ]]; then
 fi
 selected_name=$(basename "$selected" | tr . _)
 
-if ! zellij list | grep -q "$selected_name"; then
-    zellij --session-name=$selected_name --exec-str "cd $selected"
+if ! zellij list-sessions | grep -q "$selected_name"; then
+    cd $selected
+    zellij -s $selected_name 
+    cd -
 fi
 
 if [[ -n $ZELLIJ_PIPE ]]; then
     zellij detach
 fi
 
-zellij attach --session-name $selected_name
+zellij attach $selected_name
 
