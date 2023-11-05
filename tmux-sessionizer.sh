@@ -3,7 +3,7 @@
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$(find ~/versioned/work/ ~/versioned/personal/ ~/.config -mindepth 1 -maxdepth 1 -type d | fzf)
+    selected=$(find ~/versioned/work ~/versioned/personal ~/versioned/work/dooris-repo/apps ~/.config -mindepth 1 -maxdepth 1 -type d | fzf)
 fi
 
 if [[ -z $selected ]]; then
