@@ -15,7 +15,8 @@ if [[ $# -eq 1 ]]; then
           --bind 'enter:become(vim {1} +{2})'
 else
     selected=$(find ~/versioned/personal/notes -mindepth 1 -maxdepth 2 | fzf)
-    bat $selected
+
+    gum format --type markdown < $selected
     exit 0
 fi
 
